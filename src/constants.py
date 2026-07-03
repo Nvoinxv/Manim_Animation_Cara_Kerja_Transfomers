@@ -6,6 +6,14 @@ Menyimpan palet warna, tipografi, ukuran standar, dan durasi animasi.
 from manim import *
 
 # ==========================================
+# 0. KONFIGURASI OTOMATIS RENDER (1080p 60FPS)
+# ==========================================
+# Memaksa Manim selalu merender 1080p 60fps meskipun dirun biasa (tanpa flag -pqh) di VS Code
+config.pixel_width = 1920
+config.pixel_height = 1080
+config.frame_rate = 60
+
+# ==========================================
 # 1. PALET WARNA (3BLUE1BROWN STYLE)
 # ==========================================
 # Latar belakang gelap elegan (Bukan hitam pekat murni #000000 agar mata nyaman)

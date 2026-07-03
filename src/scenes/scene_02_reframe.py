@@ -76,3 +76,8 @@ class NextWordPredictionScene(Scene):
         
         # Cleanup
         self.play(FadeOut(Group(*self.mobjects)), run_time=TIME_NORMAL)
+
+if __name__ == "__main__":
+    with tempconfig({"quality": "high_quality", "preview": True}):
+        scene = NextWordPredictionScene()
+        scene.render()
