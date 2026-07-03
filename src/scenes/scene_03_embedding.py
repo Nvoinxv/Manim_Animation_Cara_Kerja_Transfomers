@@ -5,6 +5,10 @@ menjadi titik di ruang 3D/2D (grafik vektor). Titik "kucing" muncul dekat titik 
 jauh dari titik "mobil" atau "matematika" (Semantic Clustering).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.components.word_embedder import TokenBox, WordEmbeddingSpace

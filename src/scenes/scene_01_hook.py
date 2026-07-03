@@ -5,6 +5,10 @@ ngalir kata demi kata secara real-time. Menyorot bahwa ChatGPT tidak tahu jawaba
 melainkan menebak satu kata berikutnya secara berulang-ulang secepat kilat.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.components.chat_ui import ChatGPTUI

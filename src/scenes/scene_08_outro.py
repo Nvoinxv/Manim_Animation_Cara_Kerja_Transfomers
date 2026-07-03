@@ -5,6 +5,10 @@ lalu fade ke teks: "Bukan sihir. Statistik dalam skala luar biasa besar."
 Call to action untuk Like, Subscribe, dan eksplorasi topik lanjutan (RLHF, Halusinasi).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 

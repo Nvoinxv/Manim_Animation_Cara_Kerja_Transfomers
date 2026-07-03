@@ -5,6 +5,10 @@ mengubah warna/posisi titik kata, sampai di layer paling atas titiknya sudah jau
 dari awal (Hierarchical Abstraction / Deep Learning Layers).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.components.layer_stack import LayerStack

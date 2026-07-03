@@ -5,6 +5,10 @@ ke dalam kotak model, lalu keluar sebagai jaringan titik-titik yang makin rapi/t
 Menjelaskan proses belajar iteratif (tebak -> cek error -> koreksi sedikit -> ulang triliunan kali).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.utils.animations import animate_pulse

@@ -5,6 +5,10 @@ kanan jaringan titik-titik angka (statistik matematis).
 Lalu keduanya perlahan pudar menjadi tanda tanya besar dan penjelasan konsep Halusinasi.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 

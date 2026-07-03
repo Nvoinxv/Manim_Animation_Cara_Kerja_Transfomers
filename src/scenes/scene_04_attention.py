@@ -7,6 +7,10 @@ garis paling tebal ke "kucing", garis tipis ke "kasur", "tidur", dll (Heatmap ko
 Visualisasikan juga Multi-Head Attention (ratusan lampu sorot jalan bersamaan).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.components.attention_net import AttentionSentence

@@ -5,6 +5,10 @@ lalu muncul beberapa kandidat kata melayang: "Jakarta" (besar, terang), "kucing"
 "meja" (kecil, redup) — seolah mesin memilih probabilitas tertinggi.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+
 from manim import *
 from src.constants import *
 from src.utils.layouts import create_probability_bar_chart
