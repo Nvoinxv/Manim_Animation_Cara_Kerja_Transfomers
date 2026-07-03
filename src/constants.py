@@ -14,12 +14,12 @@ config.pixel_height = 1080
 config.frame_rate = 60
 
 # ==========================================
-# 1. PALET WARNA (3BLUE1BROWN STYLE)
+# 1. PALET WARNA (3BLUE1BROWN STYLE & USER PREFERENCE)
 # ==========================================
-# Latar belakang gelap elegan (Bukan hitam pekat murni #000000 agar mata nyaman)
-DARK_BG = "#161a1d"
-PANEL_BG = "#212529"
-PANEL_BORDER = "#343a40"
+# Latar belakang hitam dicampur biru (Deep Navy / Midnight Blue ala permintaan user)
+DARK_BG = "#0A1128"
+PANEL_BG = "#162238"
+PANEL_BORDER = "#3B82F6"
 
 # Warna primer geometris ala Grant Sanderson
 BLUE_3B1B = "#58C4DD"       # BLUE_D di Manim standar

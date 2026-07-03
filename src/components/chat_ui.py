@@ -2,18 +2,19 @@
 Komponen antarmuka (UI) ChatGPT Mockup.
 Menampilkan jendela chat bergaya modern dengan gelembung pertanyaan user
 dan jawaban streaming kata demi kata (real-time word prediction).
+Perbaikan: Posisi tombol dots diperbaiki ke kiri header, teks full putih (#FFFFFF).
 """
 
 from manim import *
 from src.constants import *
 
 class ChatGPTUI(VGroup):
-    def __init__(self, width=10.0, height=6.0, **kwargs):
+    def __init__(self, width=11.0, height=6.5, **kwargs):
         super().__init__(**kwargs)
         self.width = width
         self.height = height
         
-        # 1. Background Window Frame
+        # 1. Background Window Frame (Lebih terang dari latar belakang agar kontras dan jelas)
         self.window = RoundedRectangle(
             corner_radius=0.3,
             width=self.width,
@@ -21,7 +22,7 @@ class ChatGPTUI(VGroup):
             fill_color=PANEL_BG,
             fill_opacity=0.95,
             stroke_color=PANEL_BORDER,
-            stroke_width=2
+            stroke_width=2.5
         )
         
         # 2. Header Bar
@@ -29,22 +30,22 @@ class ChatGPTUI(VGroup):
             corner_radius=0.3,
             width=self.width,
             height=0.8,
-            fill_color=DARK_BG,
+            fill_color="#0F172A",  # Dark slate navy
             fill_opacity=1.0,
             stroke_width=0
         )
         self.header.align_to(self.window, UP)
         
-        # Judul Header
-        self.title_text = Text("ChatGPT (Model: GPT-4o / Transformer)", font=FONT_PRIMARY, font_size=20, color=MUTED_TEXT)
+        # Judul Header (Full Putih)
+        self.title_text = Text("ChatGPT (Model: GPT-4o / Transformer)", font=FONT_PRIMARY, font_size=20, color="#FFFFFF")
         self.title_text.move_to(self.header.get_center())
         
-        # Tombol window (macOS style dots)
+        # Tombol window (macOS style dots) - PERBAIKAN POSISI: move_to ke sisi kiri header!
         self.dots = VGroup(*[
             Circle(radius=0.08, fill_color=col, fill_opacity=1, stroke_width=0)
             for col in [RED_3B1B, YELLOW_3B1B, GREEN_3B1B]
         ]).arrange(RIGHT, buff=0.15)
-        self.dots.align_to(self.header, LEFT).shift(RIGHT * 0.4)
+        self.dots.move_to(self.header.get_left() + RIGHT * 0.6)
         
         # Garis pemisah header
         self.divider = Line(
@@ -60,18 +61,19 @@ class ChatGPTUI(VGroup):
     def create_user_prompt(self, prompt_text="Apa itu ChatGPT dan bagaimana cara kerjanya?"):
         """
         Membuat gelembung chat dari user di sebelah kanan.
+        Mengembalikan (group, text_mobject, bubble_mobject) untuk animasi cursor mengetik.
         """
-        text = Text(prompt_text, font=FONT_PRIMARY, font_size=22, color=WHITE_TEXT)
-        text.set_max_width(self.width * 0.7)
+        text = Text(prompt_text, font=FONT_PRIMARY, font_size=22, color="#FFFFFF")
+        text.set_max_width(self.width * 0.65)
         
         bubble = RoundedRectangle(
             corner_radius=0.2,
             width=text.width + 0.6,
             height=text.height + 0.4,
-            fill_color=BLUE_DARK,
-            fill_opacity=0.8,
-            stroke_color=BLUE_3B1B,
-            stroke_width=1
+            fill_color="#1E3A8A", # Blue bubble
+            fill_opacity=0.9,
+            stroke_color="#60A5FA",
+            stroke_width=1.5
         )
         
         group = VGroup(bubble, text)
@@ -81,18 +83,18 @@ class ChatGPTUI(VGroup):
         group.move_to(self.content_area_top + DOWN * (bubble.height / 2))
         group.align_to(self.window, RIGHT).shift(LEFT * 0.5)
         
-        return group
+        return group, text, bubble
         
     def create_ai_response_words(self, response_text="ChatGPT tidak tahu jawaban dari awal. Dia hanya nebak satu kata berikutnya."):
         """
-        Memecah teks balasan AI menjadi daftar mobjects kata individual
+        Memecah teks balasan AI menjadi daftar mobjects kata individual (Full Putih #FFFFFF)
         agar bisa dianimasikan muncul satu per satu (word-by-word prediction).
         """
         words = response_text.split()
         word_mobjects = VGroup()
         
         for word in words:
-            word_mob = Text(word, font=FONT_PRIMARY, font_size=24, color=WHITE_TEXT)
+            word_mob = Text(word, font=FONT_PRIMARY, font_size=24, color="#FFFFFF")
             word_mobjects.add(word_mob)
             
         # Atur layout kata secara otomatis (wrapping di dalam window)
@@ -117,4 +119,4 @@ class ChatGPTUI(VGroup):
         # Posisikan di bawah gelembung user
         lines.set_y(self.content_area_top[1] - 2.0)
         
-        return word_mobjects, lines
+        return word_mobjects
