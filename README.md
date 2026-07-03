@@ -72,17 +72,46 @@ Pastikan sistem operasi Anda (Windows) sudah terinstal:
 - **FFmpeg** (Wajib untuk rendering video dan penggabungan klip di Manim).
 - **LaTeX** (Opsional, Disarankan menggunakan MiKTeX atau TeX Live untuk render rumus matematika TeX/MathTex yang sempurna).
 
-### 2. Instalasi Dependensi
-Buka terminal / PowerShell di direktori proyek ini, lalu jalankan:
+### 2. Setup Python Virtual Environment (`myenv`) & Instalasi Manim
+Agar instalasi library **Manim** rapi dan tidak terbentur dengan library Python global di PC Anda, sangat disarankan menggunakan **Virtual Environment (`myenv`)**.
 
-```powershell
-# Buat virtual environment (opsional namun disarankan)
-python -m venv venv
-.\venv\Scripts\activate
+#### Cara Otomatis (Menggunakan Skrip Helper):
+- **Windows PowerShell**: Jalankan `.\setup_env.ps1`
+- **Git Bash / Linux / macOS**: Jalankan `bash setup_env.sh`
 
-# Instal seluruh dependensi
-pip install -r requirements.txt
-```
+#### Cara Manual (Langkah demi Langkah):
+
+1. **Buat Virtual Environment bernama `myenv`**:
+   ```powershell
+   python -m venv myenv
+   ```
+
+2. **Aktifkan Virtual Environment (`myenv`)**:
+   - Jika Anda menggunakan **Git Bash / Linux / macOS**:
+     ```bash
+     source myenv/bin/activate
+     ```
+   - Jika Anda menggunakan **Windows PowerShell**:
+     ```powershell
+     .\myenv\Scripts\activate
+     ```
+   - Jika Anda menggunakan **Windows Command Prompt (CMD)**:
+     ```cmd
+     myenv\Scripts\activate.bat
+     ```
+   *(Setelah aktif, akan muncul tulisan `(myenv)` di awal baris terminal Anda).*
+
+3. **Instal Manim & Seluruh Dependensi**:
+   ```powershell
+   python -m pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+### 3. Keamanan File (`.gitignore`)
+Proyek ini sudah dilengkapi dengan file `.gitignore` komprehensif yang otomatis melindungi dan memfilter:
+- **Folder Environment (`myenv/`, `venv/`)**: Agar puluhan megabyte library tidak ikut ter-push ke Git.
+- **File Sensitif (`.env`, `secrets.json`, API keys)**: Mencegah kebocoran kredensial atau rahasia pribadi.
+- **Output Render Manim (`media/`, `*.mp4`)**: Mencegah video berukuran raksasa memenuhi repositori Git Anda (kecuali file aset SVG/gambar di `assets/images/`).
 
 ---
 

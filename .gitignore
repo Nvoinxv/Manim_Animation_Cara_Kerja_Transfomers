@@ -1,0 +1,90 @@
+# ==========================================
+# 1. PYTHON VIRTUAL ENVIRONMENTS
+# ==========================================
+# Mengabaikan folder environment agar tidak ikut ter-upload ke Git
+myenv/
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# 2. FILE SENSITIF & KREDENSIAL (SECURITY)
+# ==========================================
+# Mencegah kebocoran API key, token rahasia, password, atau konfigurasi lokal
+.env
+.env.*
+*.key
+*.pem
+*.cert
+*.id_rsa
+secrets.json
+config.secret.json
+credentials.json
+api_keys.py
+private_keys/
+*.sqlite3
+*.db
+
+# ==========================================
+# 3. MANIM RENDER OUTPUTS (VIDEO & LOGS)
+# ==========================================
+# Mencegah file video berukuran raksasa (MP4/MOV) & log memenuhi repositori Git
+media/
+videos/
+images_output/
+texts/
+partial_movie_files/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.gif
+*.log
+media/logs/
+concat_list.txt
+
+# Pengecualian: Tetap simpan aset gambar/SVG yang dibutuhkan proyek
+!assets/images/*.svg
+!assets/images/*.png
+!assets/images/*.jpg
+!assets/images/*.jpeg
+
+# ==========================================
+# 4. PYTHON CACHE & BUILD ARTIFACTS
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+develop-eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.manifest
+*.spec
+
+# ==========================================
+# 5. IDE, EDITOR, & SYSTEM FILES
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
