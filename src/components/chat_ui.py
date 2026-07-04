@@ -58,32 +58,32 @@ class ChatGPTUI(VGroup):
         self.add(self.window, self.header, self.title_text, self.dots, self.divider)
         self.content_area_top = self.header.get_bottom() + DOWN * 0.4
         
-    def create_user_prompt(self, prompt_text="Apa itu ChatGPT dan bagaimana cara kerjanya?"):
-        """
-        Membuat gelembung chat dari user di sebelah kanan.
-        Mengembalikan (group, text_mobject, bubble_mobject) untuk animasi cursor mengetik.
-        """
-        text = Text(prompt_text, font=FONT_PRIMARY, font_size=22, color="#FFFFFF")
-        text.set_max_width(self.width * 0.65)
-        
+    def create_user_prompt(self, prompt_text="Apa itu ChatGPT dan bagaimana cara kerjanya?", return_parts=False):
+        text = Text(prompt_text, font=FONT_PRIMARY, font_size=22, color=WHITE_TEXT)
+        text.set_max_width(self.width * 0.7)
+ 
         bubble = RoundedRectangle(
             corner_radius=0.2,
             width=text.width + 0.6,
             height=text.height + 0.4,
-            fill_color="#1E3A8A", # Blue bubble
-            fill_opacity=0.9,
-            stroke_color="#60A5FA",
-            stroke_width=1.5
+            fill_color=BLUE_DARK,
+            fill_opacity=0.8,
+            stroke_color=BLUE_3B1B,
+            stroke_width=1
         )
-        
+ 
         group = VGroup(bubble, text)
         text.move_to(bubble.get_center())
-        
-        # Posisikan di kanan atas area konten
+ 
         group.move_to(self.content_area_top + DOWN * (bubble.height / 2))
         group.align_to(self.window, RIGHT).shift(LEFT * 0.5)
-        
-        return group, text, bubble
+ 
+        if return_parts:
+            # group  -> dipakai kalau cuma butuh FadeIn/FadeOut sekaligus
+            # bubble -> dipakai buat FadeIn duluan sebelum teks muncul
+            # text   -> dipakai buat animasi Write() + cursor mengikuti posisinya
+            return group, bubble, text
+        return group
         
     def create_ai_response_words(self, response_text="ChatGPT tidak tahu jawaban dari awal. Dia hanya nebak satu kata berikutnya."):
         """
