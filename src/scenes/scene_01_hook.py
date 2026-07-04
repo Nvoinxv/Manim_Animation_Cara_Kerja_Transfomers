@@ -120,6 +120,6 @@ class HookScene(Scene):
 
 
 if __name__ == "__main__":
-    with tempconfig({"quality": "high_quality", "preview": True}):
+    with tempconfig({"quality": "high_quality", "preview": True, "disable_caching": True}):
         scene = HookScene()
         scene.render()

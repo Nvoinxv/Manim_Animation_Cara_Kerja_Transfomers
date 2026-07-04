@@ -81,6 +81,6 @@ class OutroScene(Scene):
         self.play(FadeOut(Group(*self.mobjects)), run_time=2.0)
 
 if __name__ == "__main__":
-    with tempconfig({"quality": "high_quality", "preview": True}):
+    with tempconfig({"quality": "high_quality", "preview": True, "disable_caching": True}):
         scene = OutroScene()
         scene.render()

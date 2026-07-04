@@ -119,4 +119,4 @@ class ChatGPTUI(VGroup):
         # Posisikan di bawah gelembung user
         lines.set_y(self.content_area_top[1] - 2.0)
         
-        return word_mobjects
+        return word_mobjects, lines

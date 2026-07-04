@@ -107,6 +107,6 @@ class TokenAndEmbeddingScene(Scene):
         self.play(FadeOut(Group(*self.mobjects)), run_time=TIME_NORMAL)
 
 if __name__ == "__main__":
-    with tempconfig({"quality": "high_quality", "preview": True}):
+    with tempconfig({"quality": "high_quality", "preview": True, "disable_caching": True}):
         scene = TokenAndEmbeddingScene()
         scene.render()
